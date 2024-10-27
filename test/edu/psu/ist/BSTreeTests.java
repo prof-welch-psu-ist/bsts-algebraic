@@ -1,4 +1,4 @@
 package edu.psu.ist;
 
-public class BSTreeTests {
+public final class BSTreeTests {
 }
