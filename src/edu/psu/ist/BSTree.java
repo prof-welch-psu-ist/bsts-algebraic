@@ -1,6 +1,6 @@
 package edu.psu.ist;
 
-public sealed interface BSTree permits Empty, NonEmpty{
+public sealed interface BSTree permits Empty, NonEmpty {
 
     // a "static factory" method for constructing an empty tree
     static BSTree empty() { return new Empty(); }

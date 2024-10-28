@@ -22,4 +22,9 @@ public final class BSTreeTests {
         Assertions.assertEquals(3, tr.size());
         Assertions.assertEquals("10 5 20", tr.preOrder());
     }
+
+    @Test public void testFailureDup() {
+        var tr = BSTree.empty();
+
+    }
 }
