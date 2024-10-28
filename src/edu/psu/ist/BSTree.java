@@ -10,9 +10,9 @@ public interface BSTree {
 
     String preOrder();
 
-    String inOrder();
+    //String inOrder();
 
-    String postOrder();
+    //String postOrder();
 
     int size();
 }
