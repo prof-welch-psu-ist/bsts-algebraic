@@ -3,32 +3,25 @@ package edu.psu.ist;
 public final class Exercises {
 
     /**
-     * Generates a greeting message based on the contents of a binary search tree (BST).
+     * Creates a greeting message based on the contents of a binary search tree (BST).
      *
-     * <p>This method demonstrates the use of Java's <a href="https://blog.jetbrains.com/idea/2020/09/java-15-and-intellij-idea/">sealed interfaces and records</a>,
-     * as highlighted in an excellent article by JetBrains. Sealed interfaces restrict which other classes or interfaces may extend or implement them, enhancing type safety and
-     * control over class hierarchies.</p>
-     *
-     * <p>Pattern matching is utilized via <a href="https://docs.oracle.com/en/java/javase/17/language/switch-expressions-and-statements.html">switch expressions</a> introduced in Java 17.
-     * Specifically, this method employs a "deconstruction pattern"—a form of pattern matching found in various programming languages.</p>
-     *
-     * <p>In the context of this method:</p>
+     * <p>Uses <a href="https://docs.oracle.com/en/java/javase/17/language/switch-expressions-and-statements.html">Java 17 switch expressions</a> and pattern matching:</p>
      * <ul>
-     *   <li><strong>Deconstruction Pattern:</strong> Breaks down complex data structures into their constituent parts. Here, it deconstructs the BST into its left subtree, data, and right subtree.</li>
-     *   <li><strong>Wildcard Match (_):</strong> Represents a 'wildcard' that matches any value but does not bind it to a variable. It's used to ignore certain parts of the data structure.</li>
+     *   <li><strong>Deconstruction:</strong> Breaks down a BST node into its left subtree, data, and right subtree.</li>
+     *   <li><strong>Wildcard (_):</strong> Matches any value but ignores it.</li>
      * </ul>
      *
-     * <p>The method handles two cases of the BST:</p>
+     * <p>Handled cases:</p>
      * <ul>
-     *   <li><strong>NonEmpty:</strong> Indicates a BST node that contains data. It deconstructs the node into its left subtree (<code>l</code>), data (<code>d</code>), and ignores the right subtree using the wildcard (<code>_</code>).</li>
-     *   <li><strong>Empty:</strong> Represents an empty BST, matched using the wildcard.</li>
+     *   <li><strong>NonEmpty:</strong> Deconstructs the node to use its data and left subtree.</li>
+     *   <li><strong>Empty:</strong> Matches with a wildcard.</li>
      * </ul>
      *
-     * @param t the binary search tree to generate a greeting from
-     * @return a greeting string based on the contents of the tree
+     * @param t the binary search tree to create the greeting from
+     * @return a greeting string based on the tree's contents
      *
-     * @see <a href="https://blog.jetbrains.com/idea/2020/09/java-15-and-intellij-idea/">Sealed Interfaces and Records Article by JetBrains</a>
-     * @see <a href="https://docs.oracle.com/en/java/javase/17/language/switch-expressions-and-statements.html">Java Switch Expressions and Statements Documentation</a>
+     * @see <a href="https://blog.jetbrains.com/idea/2020/09/java-15-and-intellij-idea/">Sealed Interfaces and Records Article</a>
+     * @see <a href="https://docs.oracle.com/en/java/javase/17/language/switch-expressions-and-statements.html">Java Switch Documentation</a>
      */
     public static String hello(BSTree t) {
         String myReturnStr = switch (t) {
