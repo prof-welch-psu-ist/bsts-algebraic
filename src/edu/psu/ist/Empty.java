@@ -1,6 +1,6 @@
 package edu.psu.ist;
 
-// note: this would be modeled more efficiently with a singleton
+// note: this could be modeled more (space) efficiently as a singleton
 public record Empty() implements BSTree {
 
     @Override public BSTree insert(Integer toAdd) {
