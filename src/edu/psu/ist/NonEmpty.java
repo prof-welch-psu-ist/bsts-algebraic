@@ -34,15 +34,6 @@ public record NonEmpty(
             result += " " + right.preOrder();
         }
         return result;
-
-        // a (very much more functional-heavy) way of doing the above imperative code
-        /*var resultStr = switch (this) {
-            case NonEmpty(Empty _, var d, Empty _) -> d + "";
-            case NonEmpty(Empty _, var d, NonEmpty r) -> d + " " + r.preOrder();
-            case NonEmpty(NonEmpty l, var d, Empty _) -> d + " " + l.preOrder();
-            default -> data + " " + left.preOrder() + " " + right.preOrder();
-        };
-        return resultStr;*/
     }
 
     @Override public int size() {
