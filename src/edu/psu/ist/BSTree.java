@@ -11,6 +11,5 @@ public sealed interface BSTree permits Empty, NonEmpty {
     /** Returns a preorder string representation of this tree. */
     String preOrder();
 
-    /** Returns the number of nodes in {@code this} binary search tree. */
     int size();
 }
