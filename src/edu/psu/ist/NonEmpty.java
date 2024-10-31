@@ -1,6 +1,9 @@
 package edu.psu.ist;
 
-public record NonEmpty(BSTree left, Integer data, BSTree right)
+public record NonEmpty(
+            BSTree left,
+            Integer data,
+            BSTree right)
         implements BSTree {
 
     @Override public BSTree insert(Integer toAdd) {
@@ -22,24 +25,24 @@ public record NonEmpty(BSTree left, Integer data, BSTree right)
     }
 
     @Override public String preOrder() {
-      /*  String result = data + " ";
+        var result = data + "";
 
         if (left.size() != 0) { // i.e. if the left isn't empty
-            result += left.preOrder();
+            result += " " + left.preOrder();
         }
         if (right.size() != 0) {
-            result += right.preOrder();
+            result += " " + right.preOrder();
         }
         return result;
-        */
+
         // a (very much more functional-heavy) way of doing the above imperative code
-        var resultStr = switch (this) {
+        /*var resultStr = switch (this) {
             case NonEmpty(Empty _, var d, Empty _) -> d + "";
             case NonEmpty(Empty _, var d, NonEmpty r) -> d + " " + r.preOrder();
             case NonEmpty(NonEmpty l, var d, Empty _) -> d + " " + l.preOrder();
             default -> data + " " + left.preOrder() + " " + right.preOrder();
         };
-        return resultStr;
+        return resultStr;*/
     }
 
     @Override public int size() {
