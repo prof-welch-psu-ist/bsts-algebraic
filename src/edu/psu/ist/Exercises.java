@@ -27,8 +27,8 @@ public final class Exercises {
         String myReturnStr = switch (t) {
             case NonEmpty(var l, var d, _) ->
                     "Hello, I'm a BST with data: " + d + "\n" +
-                            "Here's the size of my left subtree: " + l.size();
-            case Empty _ -> "Empty :-(";
+                    "Here's the size of my left subtree: " + l.size();
+            case Empty e -> "Empty :-(";
         };
         return myReturnStr;
     }
