@@ -10,10 +10,10 @@ immutable `BSTree` (Binary Search Tree) type defined this week in class.
 3. you should be using JDK23 for these + IntelliJ 2024.X (more recent the better)
 4. write one or two minimal `@Test`s for each of these 
 methods in the green test dir to confirm your implementation is working 
-5. do as many of these as you can (some of the later ones involve java's (higher-order) `Function` 
-   * [somewhat OK resource on higher order functions and predicates in java](https://softwarepatternslexicon.com/patterns-java/11/2/) -- 
-   might be helpful for the last one 
-
+5. do as many of these as you can -- the last one you'll need to use a higher-order 
+`Function` 
+   * [somewhat OK resource on higher order functions and predicates in java](https://softwarepatternslexicon.com/patterns-java/11/2/) 
+   
 ### method: `sumAll`
 
 Write a method, `sumAll` that takes `BSTree` and produces the sum of all the nodes.
