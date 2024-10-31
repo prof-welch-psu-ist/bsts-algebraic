@@ -5,12 +5,11 @@ immutable `BSTree` (Binary Search Tree) type defined this week in class.
 
 **Instructions:**
 
-1. create a file, `Exercises` in package: `edu.psu.ist` (under the blue `src`)
-2. implement each of the following as a `static` methods
-3. you should be using JDK23 for these + IntelliJ 2024.X (more recent the better)
-4. write one or two minimal `@Test`s for each of these 
+1. read the `exercises.md` in the root directory of this repo and implement each as a static method in the `Exercises` class.
+2. you should be using JDK23 for these + IntelliJ 2024.X (more recent the better)
+3. write one or two minimal `@Test`s for each of these 
 methods in the green test dir to confirm your implementation is working 
-5. do as many of these as you can -- the last one you'll need to use a higher-order 
+4. do as many of these as you can -- the last one you'll need to use a higher-order 
 `Function` 
    * [somewhat OK resource on higher order functions and predicates in java](https://softwarepatternslexicon.com/patterns-java/11/2/) 
    
