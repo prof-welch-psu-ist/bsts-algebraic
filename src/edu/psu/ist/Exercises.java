@@ -28,7 +28,7 @@ public final class Exercises {
             case NonEmpty(var l, var d, _) ->
                     "Hello, I'm a BST with data: " + d + "\n" +
                             "Here's the size of my left subtree: " + l.size();
-            case Empty _                   -> "Empty :-(";
+            case Empty _ -> "Empty :-(";
         };
         return myReturnStr;
     }
