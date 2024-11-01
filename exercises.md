@@ -15,7 +15,7 @@ methods in the green test dir to confirm your implementation is working
    
 ### method: `sumAll`
 
-Write a method, `sumAll` that takes `BSTree` and produces the sum of all the nodes.
+Write a method, `sumAll` that takes a `BSTree` and produces the sum of all the nodes.
 
 ```java
 BSTree tr = BSTree.empty()
@@ -28,7 +28,7 @@ System.out.println(res); // sum of all nodes is 50
 ```
 ### method: `sumLeafs`
 
-Now write a variant, `sumLeafs` that takes `BSTree` and produces/returns the 
+Now write a variant, `sumLeafs` that takes a `BSTree` and produces/returns the 
 sum of only the leaf nodes in the bst. 
 
 ```java
@@ -44,7 +44,7 @@ System.out.println(res); // 20 (sum of leaf nodes 5 and 15)
 ```
 ### method: `maxDepth`
 
-Write a method, `maxDepth` that computes the depth (or height) of the tree, 
+Write a method `maxDepth` that takes a `BSTree` and computes the depth (or height) of the tree, 
 defined as the number of edges from the root node to the 
 deepest leaf node.
 
@@ -106,7 +106,7 @@ System.out.println(res); // true
 
 ### method: `mirror`
 
-Write a method `mirror` that returns a new `BSTree` where the 
+Write a method `mirror` that returns a `BSTree` where the 
 left and right children of each node are swapped, creating a 
 mirror image of the original tree.
 
