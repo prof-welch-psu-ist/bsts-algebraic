@@ -3,16 +3,98 @@
 Do all these methods recursively. They will each do some operation on the 
 immutable `BSTree` (Binary Search Tree) type defined this week in class.
 
-**Instructions:**
+### Recap: how this all works
 
-1. read the `exercises.md` in the root directory of this repo and implement each as a static method in the `Exercises` class.
-2. you should be using JDK23 for these + IntelliJ 2024.X (more recent the better)
-3. write one or two minimal `@Test`s for each of these 
+In class last week we defined the following binary search tree interface type as a so called ["algebraic type"](https://en.wikipedia.org/wiki/Algebraic_data_type).
+This is a compressed form of the BST tree type we ended up modeling last week:
+
+```java
+public sealed interface BSTree {
+  record Empty()                                       implements BSTree { /* snip */ }
+  record NonEmpty(BSTree left, int data, BSTree right) implements BSTree { /* snip */ } // "node"
+}
+```
+So we have a new type we're defining called `BSTree`. It's a normal java interface-type with one important caveat:
+
+> it only supports two possible implementations `Empty` and `NonEmpty`
+
+### whats the deal with these two small records?
+
+If you can't remember what a ```record``` is, give this a [quick read/skim](https://www.infoq.com/articles/exploring-java-records/) and come back.
+
+Basically, there are only two possible implementations of a `BSTree`:
+
+* `Empty`: which represents an empty tree.
+* `NonEmpty` which represents a node that stores a `left` subtree, a piece of `data` (of type int), and a `right` subtree.
+
+#### Visual Representation
+```
+Empty Tree:
+empty
+
+NonEmpty Tree:
+    10
+   /  \
+empty empty
+```
+
+### Polymorphism with BSTree
+Polymorphism allows a BSTree variable to hold either an Empty or NonEmpty instance.
+
+> recall the definition of "polymorphism" a variable with a single declared-type that can take on several (poly) different forms (morphisms) at runtime
+
+For example, consider our `BSTree` type...
+
+```java
+BSTree tree1 = new Empty(); // var decl + initialization
+System.out.println(tree1); // prints empty
+```
+
+currently the `tree1`'s variable's **declared type** is `BSTree` and the variable is getting initialized
+to be a `new` emty tree (this is tree1s curren **runtime type**)
+
+But the essence of polymorphism is that a variables **runtime/dynamic** type can change easily.... consider:
+```java
+tree1 = new NonEmpty(new Empty(), 10, new Empty()); // reassigning/updating var tree1 to be a 
+```
+Now we've reassigned var `tree1` (which still has **declared type**: `BSTree`) to now have a **runtime type** of: `new NonEmpty(..)`. But as far as Java's type system is (statically) concerned.. i.e.:pre-execution: `tree1` is still just a variable of **declared type** `BSTtree`... and it will be forever. Just realize that it's **dynamic type** can change whenever at runtime.
+
+### Benefits of Sealed Interfaces
+
+Sealed interfaces ensure all possible cases are covered. This removes the need for a default case in switch statements. 
+
+
+```java
+public void printTreeType(BSTree tree) {
+    switch (tree) {
+        case Empty e     -> System.out.println("The tree is empty.");
+        case NonEmpty ne -> System.out.println("The tree has data: " + ne.data());
+        // No default case needed (due to the sealed in the BSTree interface)
+    }
+}
+```
+So using type-level pattern matching, we can just read match on variable `tree` (which has a broad declared type of `BSTree`) and match specifically on whatever its **runtime type** happens to be! 
+
+### Some examples:
+```java
+BSTree emptyTree = BSTree.empty();
+BSTree nonEmptyTree = emptyTree.insert(20);
+
+printTreeType(emptyTree);    // Output: The tree is empty.
+printTreeType(nonEmptyTree); // Output: The tree has data: 20
+```
+
+**Exercise Instructions:**
+
+1. you should be using JDK23 for these + IntelliJ 2024.X (more recent the better)
+2. write one or two minimal `@Test`s for each of these 
 methods in the green test dir to confirm your implementation is working 
-4. do as many of these as you can -- the last one you'll need to use a higher-order 
+3. do as many of these as you can -- the last one you'll need to use a higher-order 
 `Function` 
    * [somewhat OK resource on higher order functions and predicates in java](https://softwarepatternslexicon.com/patterns-java/11/2/) 
-   
+
+Hint: basically all of these methods you can accomplish with a single `return <swich-expression>` that matches on the runtime type of the `BSTree` passed into the method.
+
 ### method: `sumAll`
 
 Write a method, `sumAll` that takes a `BSTree` and produces the sum of all the nodes.
