@@ -73,7 +73,7 @@ public void printTreeType(BSTree tree) {
     }
 }
 ```
-So using type-level pattern matching, we can just read match on variable `tree` (which has a broad declared type of `BSTree`) and match specifically on whatever its **runtime type** happens to be! 
+So using type-level pattern matching, we can just `switch` on the variable `tree` (of type: `BSTree`) in the `printTreeType(..)` method above and "match" specifically on whatever its **runtime type** happens to be! 
 
 ### Some examples:
 ```java
