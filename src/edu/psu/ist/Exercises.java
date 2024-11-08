@@ -48,7 +48,35 @@ public final class Exercises {
     }
 
     public static boolean pathSum(BSTree tree, int target) {
-        throw new UnsupportedOperationException("uoe");
+        return switch (tree) {
+            // case 1: the tree is empty and the target is 0
+            // so we trivially satisfy the target
+            case Empty _ when target == 0 -> true;
+
+            // case 2: we have non-zero target amount BUT we have
+            //      an empty tree on our hands, so it's impossible
+            //      to reach the target, so give back false
+            case Empty _ -> false;
+
+            // case 3: we're at a leaf node... ask the question:
+            //          does subtracting the leafs target - data == 0
+            //          then we've found a satisfying path down through the
+            //          tree
+            case NonEmpty(Empty _, int d, Empty _) -> target - d == 0;
+
+            // case 4: is it possible to reach the target amount
+            //          by going down the left (l) or the right subtree (r)
+            case NonEmpty(var l, int d, var r) -> {
+                boolean possibleWithLeft = pathSum(l, target - d) ||
+                                            pathSum(l, target);
+
+                boolean possibleWithRight = pathSum(r, target - d) ||
+                                            pathSum(r, target);
+                yield possibleWithLeft || possibleWithRight;
+
+            }
+
+        };
     }
 
 
