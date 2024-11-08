@@ -1,5 +1,6 @@
 package edu.psu.ist;
 
+import java.util.ArrayList;
 import java.util.function.Function;
 import java.util.function.Predicate;
 
@@ -7,9 +8,8 @@ public final class Exercises {
 
     public static int sumAll(BSTree tree) {
         return switch (tree) {
-            case Empty _ ->  0;
-            case NonEmpty(var l, var data, var r) ->
-                data + sumAll(l) + sumAll(r);
+            case Empty _ -> 0;
+            case NonEmpty(var l, var data, var r) -> data + sumAll(l) + sumAll(r);
         };
     }
 
@@ -18,14 +18,13 @@ public final class Exercises {
     //                     25
     public static int maxDepth(BSTree tree) {
         return switch (tree) {
-            case Empty _                   -> 0;
+            case Empty _ -> 0;
             case NonEmpty(var l, _, var r) -> {
                 var depthOfLeft = maxDepth(l);
                 var depthOfRight = maxDepth(r);
                 if (depthOfLeft < depthOfRight) {
                     yield 1 + depthOfRight;
-                }
-                else {
+                } else {
                     yield 1 + depthOfLeft;
                 }
             }
@@ -49,38 +48,20 @@ public final class Exercises {
     }
 
     public static boolean pathSum(BSTree tree, int target) {
-        return switch (tree) {
-            // case 1: looking at empty trees....
-            case Empty _ when target == 0 -> true;
-            case Empty _                  -> false;
-
-            // case 2: looking at a leaf node....
-            case NonEmpty(Empty _, var d, Empty _) -> target - d == 0;
-
-            // case 3: looking at a nonempty tree
-            //          where the left or right kids might be nonempty
-            case NonEmpty(var l, var d, var r) -> {
-               // two possibilities:
-               //   1) we either take data d from THIS node and subtract it from
-               //       our target amt
-               //   2) we DONT take the data d from THIS node, and still recurse
-                //
-            }
-
-        };
+        throw new UnsupportedOperationException("uoe");
     }
 
 
     //              10                                          f(10)
     //          5        20   === allSatisfy(tree, f) ==> f(5)          f(20)
     //                15                                            f(15)
-    public static boolean allSatisfy(BSTree tree,
-                                     Predicate<Integer> f) {
+    public static boolean allSatisfy(BSTree tree, Function<Integer, Boolean> f) {
         return switch (tree) {
-            case Empty _                         -> true;
-            case NonEmpty(var lf, var x, var rt) ->
-                f.test(x) && allSatisfy(lf, f) && allSatisfy(rt, f);
+            // case 1: the tree is empty -- so it trivially satisfies f
+            case Empty _ -> true;
+            case NonEmpty(BSTree left, int data, BSTree right) ->
+                f.apply(data) && allSatisfy(left, f) && allSatisfy(right, f);
+
         };
     }
-
 }
