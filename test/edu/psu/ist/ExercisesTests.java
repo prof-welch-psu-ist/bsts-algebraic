@@ -49,43 +49,63 @@ public final class ExercisesTests {
     }*/
 
     @Test public void testMaxDepth() {
-        var tr = BSTree.empty()
-                .insert(10)
-                .insert(5)
-                .insert(20)
-                .insert(25);
+        //          10
+        //     5         20
+        //                     25
+        var tr = BSTree.empty().insert(10).insert(5).insert(20).insert(25);
         Assertions.assertEquals(3, Exercises.maxDepth(tr));
     }
+
     //          10
     //     5         20
     //                     25
     //                  21
     @Test public void testMaxDepth02() {
-        var tr = BSTree.empty()
-                .insert(10)
-                .insert(5)
-                .insert(20)
-                .insert(25)
-                .insert(21);
+        var tr = BSTree.empty().insert(10).insert(5).insert(20).insert(25).insert(21);
         Assertions.assertEquals(4, Exercises.maxDepth(tr));
+    }
+
+    //          10
+    //     5         20
+    //                     25
+    //                  21
+    @Test public void testLeafSum01() {
+        var tr = BSTree.empty().insert(10).insert(5).insert(20).insert(25).insert(21);
+        Assertions.assertEquals(26, Exercises.sumAllLeafs(tr));
+    }
+
+
+    @Test public void testLeafSum02() {
+        var tr = BSTree.empty().insert(10);
+        Assertions.assertEquals(10, Exercises.sumAllLeafs(tr));
+    }
+
+    //          10
+    //     5         20
+    //                     25
+    // -------------------------
+    //          10
+    //     20         5
+    // 25
+    @Test public void testMirror01() {
+        var tr = BSTree.empty().insert(10).insert(5).insert(20).insert(25);
+        var flippedTr = Exercises.mirror(tr);
+        var expectedFlippedTree = new NonEmpty(new NonEmpty(new NonEmpty(new Empty(), 25, new Empty()), 20, new Empty()),  // right
+                10, new NonEmpty(new Empty(), 5, new Empty()) // left
+        );
+        Assertions.assertEquals("10 20 25 5", flippedTr.preOrder());
+        Assertions.assertEquals(expectedFlippedTree, flippedTr);
     }
 
     //          10
     //     5
     @Test public void testMaxDepth03() {
-        var tr = BSTree.empty()
-                .insert(10)
-                .insert(5);
+        var tr = BSTree.empty().insert(10).insert(5);
         Assertions.assertEquals(2, Exercises.maxDepth(tr));
     }
 
-    @Test
-    public void testAllSat() {
-        var tr = BSTree.empty()
-                .insert(10)
-                .insert(5)
-                .insert(20)
-                .insert(15);
+    @Test public void testAllSat() {
+        var tr = BSTree.empty().insert(10).insert(5).insert(20).insert(15);
 
         Predicate<Integer> myPred = (Integer y) -> y > 20;
 
@@ -111,11 +131,12 @@ public final class ExercisesTests {
         //      10
         //   5      15
         // 1   7
-        var tr = BSTree.empty()
-                .insert(10)
-                .insert(5)
-                .insert(20)
-                .insert(15);
+        var tr = BSTree.empty() //
+                .insert(10) //
+                .insert(5) //
+                .insert(15) //
+                .insert(1) //
+                .insert(7);
         Assertions.assertTrue(Exercises.pathSum(tr, 22));
     }
 
